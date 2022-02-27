@@ -14,18 +14,25 @@ import { CategoryService } from "../../categories/shared/category.service";
   templateUrl: './entry-form.component.html',
   styleUrls: ['./entry-form.component.css']
 })
-export class EntryFormComponent extends BaseResourceFormComponent<Entry> implements OnInit{
+export class EntryFormComponent extends BaseResourceFormComponent<Entry> implements OnInit {
 
   categories: Array<Category>;
 
   imaskConfig = {
-    mask: Number,
-    scale: 2,
-    thousandsSeparator: '',
-    padFractionalZeros: true,
-    normalizeZeros: true,
-    radix: ',',
-    mapToRadix: ['.']
+    mask: Number,  // enable number mask
+
+    // other options are optional with defaults below
+    scale: 2,  // digits after point, 0 for integers
+    signed: false,  // disallow negative
+    thousandsSeparator: '',  // any single char
+    padFractionalZeros: false,  // if true, then pads zeros at end to the length of scale
+    normalizeZeros: true,  // appends or removes zeros at ends
+    radix: ',',  // fractional delimiter
+    mapToRadix: ['.'],  // symbols to process as radix
+
+    // additional number interval options (e.g.)
+    min: -10000,
+    max: 10000
 
   };
 
@@ -44,9 +51,11 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
   }
 
   constructor(
+
     protected entryService: EntryService,
     protected categoryService: CategoryService,
     protected injector: Injector
+
   ) {
     super(injector, new Entry(), entryService, Entry.fromJson)
   }
@@ -54,9 +63,10 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
   ngOnInit() {
     this.loadCategories();
     super.ngOnInit();
+
   }
 
-  get typeOptions(): Array<any>{
+  get typeOptions(): Array<any> {
     return Object.entries(Entry.types).map(
       ([value, text]) => {
         return {
@@ -66,22 +76,23 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
       }
     )
   }
-  
+
 
   protected buildResourceForm() {
     this.resourceForm = this.formBuilder.group({
       id: [null],
       name: [null, [Validators.required, Validators.minLength(2)]],
       description: [null],
-      type: ["expense", [Validators.required]],
+      type: [null, [Validators.required]],
       amount: [null, [Validators.required]],
       date: [null, [Validators.required]],
       paid: [true, [Validators.required]],
-      categoryId: [null, [Validators.required]]
+      categoryId: [null],
+      category: [null]
     });
   }
 
-  private loadCategories(){
+  private loadCategories() {
     this.categoryService.getAll().subscribe(
       categories => this.categories = categories
     );

@@ -15,7 +15,7 @@ import * as moment from "moment"
 })
 export class EntryService extends BaseResourceService<Entry> {
 
-  constructor(protected injector: Injector, private categoryService: CategoryService) { 
+  constructor(protected injector: Injector, private categoryService: CategoryService) {
     super("http://localhost:8080/entry", injector, Entry.fromJson);
   }
 
@@ -35,7 +35,7 @@ export class EntryService extends BaseResourceService<Entry> {
   }
 
 
-  private setCategoryAndSendToServer(entry: Entry, sendFn: any): Observable<Entry>{
+  private setCategoryAndSendToServer(entry: Entry, sendFn: any): Observable<Entry> {
     return this.categoryService.getById(entry.categoryId).pipe(
       flatMap(category => {
         entry.category = category;
@@ -51,7 +51,7 @@ export class EntryService extends BaseResourceService<Entry> {
       const monthMatches = entryDate.month() + 1 == month;
       const yearMatches = entryDate.year() == year;
 
-      if(monthMatches && yearMatches) return entry;
+      if (monthMatches && yearMatches) return entry;
     })
   }
 

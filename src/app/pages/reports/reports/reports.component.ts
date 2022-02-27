@@ -50,34 +50,34 @@ export class ReportsComponent implements OnInit {
     const month = this.month.nativeElement.value;
     const year = this.year.nativeElement.value;
 
-    if(!month || !year)
+    if (!month || !year)
       alert('Você precisa selecionar o Mês e o Ano para gerar os relatórios')
     else
       this.entryService.getByMonthAndYear(month, year).subscribe(this.setValues.bind(this))
   }
 
 
-  private setValues(entries: Entry[]){
+  private setValues(entries: Entry[]) {
     this.entries = entries;
     this.calculateBalance();
     this.setChartData();
   }
 
 
-  private calculateBalance(){
+  private calculateBalance() {
     let expenseTotal = 0;
     let revenueTotal = 0;
 
     this.entries.forEach(entry => {
-      if(entry.type == 'revenue')
+      if (entry.type == 'revenue')
         revenueTotal += currencyFormatter.unformat(entry.amount, { code: 'BRL' })
       else
         expenseTotal += currencyFormatter.unformat(entry.amount, { code: 'BRL' })
     });
 
-    this.expenseTotal = currencyFormatter.format(expenseTotal, { code: 'BRL'});
-    this.revenueTotal = currencyFormatter.format(revenueTotal, { code: 'BRL'});
-    this.balance = currencyFormatter.format(revenueTotal - expenseTotal, { code: 'BRL'});
+    this.expenseTotal = currencyFormatter.format(expenseTotal, { code: 'BRL' });
+    this.revenueTotal = currencyFormatter.format(revenueTotal, { code: 'BRL' });
+    this.balance = currencyFormatter.format(revenueTotal - expenseTotal, { code: 'BRL' });
   }
 
 
@@ -97,7 +97,7 @@ export class ReportsComponent implements OnInit {
       );
 
       // if found entries, then sum entries amount and add to chartData
-      if(filteredEntries.length > 0){
+      if (filteredEntries.length > 0) {
         const totalAmount = filteredEntries.reduce(
           (total, entry) => total + currencyFormatter.unformat(entry.amount, { code: 'BRL' }), 0
         )

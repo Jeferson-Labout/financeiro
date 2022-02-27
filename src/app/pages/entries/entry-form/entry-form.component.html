@@ -8,7 +8,17 @@
   button-link="/entries"
   button-class="btn-danger"
 ></app-page-header>
+<style>
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
 
+  input[type=number] {
+      -moz-appearance: textfield;
+  }
+</style>
 
 <form [formGroup]="resourceForm" (submit)="submitForm()">
 
@@ -24,7 +34,8 @@
           <label for="type">Tipo</label>
 
           <select name="type" id="type" formControlName="type" class="form-control">
-            <option *ngFor="let option of typeOptions" [value]="option.value">{{ option.text }}</option>
+           <option value="revenue">Receita</option>
+            <option value="expense">Despesa</option>
           </select>
 
           <app-form-field-error [form-control]="resourceForm.get('type')"></app-form-field-error>
@@ -45,8 +56,9 @@
             <div class="input-group-prepend">
               <div class="input-group-text">R$</div>
             </div>
-            <input [imask]="imaskConfig" type="text" class="form-control text-right" id="amount" formControlName="amount">
+            <input  type="number" class="form-control text-right" id="amount" formControlName="amount">
           </div>
+
 
           <app-form-field-error [form-control]="resourceForm.get('amount')"></app-form-field-error>
         </div>
