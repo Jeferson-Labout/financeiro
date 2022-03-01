@@ -8,6 +8,7 @@ import { CategoryService } from "../../categories/shared/category.service";
 import { Entry } from "./entry.model";
 
 import * as moment from "moment"
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ import * as moment from "moment"
 export class EntryService extends BaseResourceService<Entry> {
 
   constructor(protected injector: Injector, private categoryService: CategoryService) {
-    super("https://financeiro-labout.herokuapp.com/entry", injector, Entry.fromJson);
+    super(`${environment.API}entry`, injector, Entry.fromJson);
   }
 
 
