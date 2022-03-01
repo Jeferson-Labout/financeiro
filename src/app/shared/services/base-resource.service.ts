@@ -73,7 +73,6 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   }
 
   protected jsonDataToResource(jsonData: any): T {
-    console.log(jsonData)
     return this.jsonDataToResourceFn(jsonData);
   }
 
