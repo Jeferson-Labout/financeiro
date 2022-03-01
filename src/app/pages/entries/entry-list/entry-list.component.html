@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let entry of resources">
+    <tr  [class.table-danger]="entry.paidText=='Pedente'" [class.table-success]="entry.paidText=='Pago'" *ngFor="let entry of resources">
       <td>
         <strong>{{entry.name}}</strong><br>
         <small class="text-success">{{entry.date}}</small><br>

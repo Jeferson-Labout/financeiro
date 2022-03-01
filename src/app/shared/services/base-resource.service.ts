@@ -12,11 +12,11 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   protected http: HttpClient;
 
   constructor(
-    protected apiPath: string, 
-    protected injector: Injector, 
+    protected apiPath: string,
+    protected injector: Injector,
     protected jsonDataToResourceFn: (jsonData: any) => T
-  ){
-    this.http = injector.get(HttpClient);    
+  ) {
+    this.http = injector.get(HttpClient);
   }
 
   getAll(): Observable<T[]> {
@@ -31,7 +31,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
 
     return this.http.get(url).pipe(
       map(this.jsonDataToResource.bind(this)),
-      catchError(this.handleError)      
+      catchError(this.handleError)
     )
   }
 
@@ -60,23 +60,24 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     )
   }
 
-  
+
 
   // PROTECTED METHODS
 
   protected jsonDataToResources(jsonData: any[]): T[] {
     const resources: T[] = [];
     jsonData.forEach(
-      element => resources.push( this.jsonDataToResourceFn(element) )
+      element => resources.push(this.jsonDataToResourceFn(element))
     );
     return resources;
   }
 
   protected jsonDataToResource(jsonData: any): T {
+    console.log(jsonData)
     return this.jsonDataToResourceFn(jsonData);
   }
 
-  protected handleError(error: any): Observable<any>{
+  protected handleError(error: any): Observable<any> {
     console.log("ERRO NA REQUISIÇÃO => ", error);
     return throwError(error);
   }

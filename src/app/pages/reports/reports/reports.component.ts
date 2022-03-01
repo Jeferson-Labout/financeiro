@@ -93,7 +93,7 @@ export class ReportsComponent implements OnInit {
     this.categories.forEach(category => {
       // filtering entries by category and type
       const filteredEntries = this.entries.filter(
-        entry => (entry.categoryId == category.id) && (entry.type == entryType)
+        entry => (entry.category.id == category.id) && (entry.type == entryType)
       );
 
       // if found entries, then sum entries amount and add to chartData

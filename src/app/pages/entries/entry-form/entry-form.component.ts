@@ -62,6 +62,7 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
 
   ngOnInit() {
     this.loadCategories();
+
     super.ngOnInit();
 
   }
@@ -83,7 +84,7 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
       id: [null],
       name: [null, [Validators.required, Validators.minLength(2)]],
       description: [null],
-      type: [null, [Validators.required]],
+      type: ["expense", [Validators.required]],
       amount: [null, [Validators.required]],
       date: [null, [Validators.required]],
       paid: [true, [Validators.required]],
@@ -96,6 +97,7 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
     this.categoryService.getAll().subscribe(
       categories => this.categories = categories
     );
+
   }
 
   protected creationPageTitle(): string {
