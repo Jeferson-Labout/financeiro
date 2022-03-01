@@ -9,7 +9,7 @@ import { BaseResourceService } from "../../../shared/services/base-resource.serv
 export class CategoryService extends BaseResourceService<Category> {
 
   constructor(protected injector: Injector) {
-    super("http://localhost:8080/category", injector, Category.fromJson);
+    super("https://financeiro-labout.herokuapp.com/category", injector, Category.fromJson);
   }
 
 }

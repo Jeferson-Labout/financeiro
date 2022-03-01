@@ -16,7 +16,7 @@ import * as moment from "moment"
 export class EntryService extends BaseResourceService<Entry> {
 
   constructor(protected injector: Injector, private categoryService: CategoryService) {
-    super("http://localhost:8080/entry", injector, Entry.fromJson);
+    super("https://financeiro-labout.herokuapp.com/entry", injector, Entry.fromJson);
   }
 
 
