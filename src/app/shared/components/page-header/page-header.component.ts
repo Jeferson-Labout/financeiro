@@ -12,12 +12,10 @@ export class PageHeaderComponent implements OnInit {
   @Input('button-class') buttonClass: string;
   @Input('button-text') buttonText: string;
   @Input('button-link') buttonLink: string;
-  @Input('button-icon') buttonIcon: string;
 
   constructor() { }
 
   ngOnInit() {
-
   }
 
 }

@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -18,8 +17,7 @@ registerLocaleData(ptBr);
   imports: [
     CoreModule,
     AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule
+    HttpClientModule
   ],
   providers: [{
     provide: LOCALE_ID,
