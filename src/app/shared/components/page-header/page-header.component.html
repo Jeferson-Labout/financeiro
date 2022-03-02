@@ -5,8 +5,10 @@
     </h1>
   </div>
   <div *ngIf="showButton" class="col-md-3 text-right">
-    <a [routerLink]="buttonLink" class="btn" [ngClass]="buttonClass">
+    <a [routerLink]="buttonLink" class="btn btn-outline btn-sm mx-auto" [ngClass]="buttonClass">
+      <i class="material-icons mt-1">{{buttonIcon}}</i>
       {{buttonText}}
+     
     </a>
   </div>
 </div>
