@@ -4,9 +4,10 @@
 
 <app-page-header
   page-title="Lançamentos"
-  button-text="+ Novo Lançamento"
+  button-text=""
   button-link="new"
-  button-class="btn-success"
+  button-class="btn-outline-success"
+  button-icon="add"
 ></app-page-header>
 
 
@@ -37,8 +38,12 @@
         <span class="badge badge-light">{{entry.paidText}}</span>
       </td>
       <td class="text-center">
-        <a [routerLink]="[entry.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
-        <button (click)="deleteResource(entry)" class="btn btn-outline-danger btn-sm">Excluir</button>
+        <a [routerLink]="[entry.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">
+          <i class="material-icons">edit</i>
+        </a>
+        <button (click)="deleteResource(entry)" class="btn btn-outline-danger btn-sm">
+          <i class="material-icons">delete</i>
+        </button>
       </td>
     </tr>
   </tbody>
