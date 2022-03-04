@@ -8,6 +8,7 @@ import { EntryService } from "../shared/entry.service";
 
 import { Category } from "../../categories/shared/category.model";
 import { CategoryService } from "../../categories/shared/category.service";
+import IMask from 'imask';
 
 @Component({
   selector: 'app-entry-form',
@@ -27,7 +28,7 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
     thousandsSeparator: '',  // any single char
     padFractionalZeros: false,  // if true, then pads zeros at end to the length of scale
     normalizeZeros: true,  // appends or removes zeros at ends
-    radix: ',',  // fractional delimiter
+    radix: '.',  // fractional delimiter
     mapToRadix: ['.'],  // symbols to process as radix
 
     // additional number interval options (e.g.)

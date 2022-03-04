@@ -15,7 +15,7 @@
   <thead>
     <tr class="bg-secondary text-light">
       <th>Categoria</th>
-      <th>Ações</th>
+      <th class="text-right">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -24,13 +24,14 @@
         <strong>{{category.name}}</strong><br>
         <small>{{category.description}}</small>
       </td>
-      <td>
-        <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm ">
-          <i class="material-icons mt-1">edit</i>
-        </a>
-        <button (click)="deleteResource(category)" class="btn btn-outline-danger btn-sm ml-1">
-          <i class="material-icons mt-1">delete</i>
+     
+      <td class="text-center">
+        <button (click)="deleteResource(category)" class="btn btn-outline-danger btn-sm mr-2 mt-1 btn-right">
+          <i class="material-icons">delete</i>
         </button>
+        <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm mr-2 mt-1 btn-right">
+          <i class="material-icons">edit</i>
+        </a>
       </td>
     </tr>
   </tbody>
