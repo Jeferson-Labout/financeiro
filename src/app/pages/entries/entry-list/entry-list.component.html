@@ -38,12 +38,12 @@
         <span class="badge badge-light">{{entry.paidText}}</span>
       </td>
       <td class="text-center">
-        <a [routerLink]="[entry.id, 'edit']" class="btn btn-outline-info btn-sm mr-2 mt-1 btn-right">
-          <i class="material-icons">edit</i>
-        </a>
         <button (click)="deleteResource(entry)" class="btn btn-outline-danger btn-sm mr-2 mt-1 btn-right">
           <i class="material-icons">delete</i>
         </button>
+        <a [routerLink]="[entry.id, 'edit']" class="btn btn-outline-info btn-sm mr-2 mt-1 btn-right">
+          <i class="material-icons">edit</i>
+        </a>
       </td>
     </tr>
   </tbody>

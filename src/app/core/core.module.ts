@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { IMaskModule } from 'angular-imask';
 
 @NgModule({
   imports: [
@@ -12,12 +13,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    IMaskModule
   ],
   declarations: [
     NavbarComponent
   ],
-  exports:[
+  exports: [
     // shared modules
     BrowserModule,
     BrowserAnimationsModule,

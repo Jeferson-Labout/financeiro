@@ -4,10 +4,10 @@
 
 <app-page-header
   [page-title]="pageTitle"
-  button-text="<< Voltar"
+  button-text="Voltar"
   button-link="/categories"
   button-class="btn-danger"
-  button-icon=''
+  button-icon='arrow_left'
 ></app-page-header>
 
 
@@ -37,8 +37,8 @@
 
   <app-server-error-messages [server-error-messages]="serverErrorMessages"></app-server-error-messages>
 
-  <button [disabled]="submittingForm || resourceForm.invalid" type="submit" class="btn btn-primary btn-lg float-right mt-3">
-    Salvar
+  <button  class="btn btn-primary btn-sm-0 float-right ml-2 mt-1 " [disabled]="submittingForm || resourceForm.invalid" type="submit" >
+  <i class="material-icons  btn-sm-0">done_all</i> Salvar
   </button>
-
+ 
 </form>
