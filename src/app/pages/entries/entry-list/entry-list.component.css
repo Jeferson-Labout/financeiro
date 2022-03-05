@@ -16,6 +16,24 @@
 
 }
 
+.btn-pesquisa {
+  width: 140px;
+  height: 38px;
+  text-align: center;
+  border-radius: 10px;
+
+  position: relative;
+
+  /* flex para alinhar conteúdo*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  padding: .375rem .75rem;
+
+}
+
 /* .btn {
     display: inline-block;
     font-weight: 400;

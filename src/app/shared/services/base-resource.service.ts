@@ -19,10 +19,19 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     this.http = injector.get(HttpClient);
   }
 
+  getMes(): Observable<T[]> {
+    return this.http.get(`${this.apiPath}/mes`).pipe(
+      map(this.jsonDataToResources.bind(this)),
+      catchError(this.handleError)
+
+    )
+  }
+
   getAll(): Observable<T[]> {
     return this.http.get(this.apiPath).pipe(
       map(this.jsonDataToResources.bind(this)),
       catchError(this.handleError)
+
     )
   }
 
@@ -73,6 +82,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   }
 
   protected jsonDataToResource(jsonData: any): T {
+    console.log(this.apiPath)
     return this.jsonDataToResourceFn(jsonData);
   }
 
