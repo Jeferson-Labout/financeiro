@@ -26,11 +26,11 @@
       </td>
      
       <td class="text-center">
-        <button (click)="deleteResource(category)" class="btn btn-outline-danger btn-sm mr-2 mt-1 btn-right">
-          <i class="material-icons">delete</i>
-        </button>
-        <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm mr-2 mt-1 btn-right">
-          <i class="material-icons">edit</i>
+        <a (click)="deleteResource(category)" class="btn btn-link text-danger mr-2 mt-1 btn-right" tool>
+          <i class="material-icons" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover Categoria">delete</i>
+        </a>
+        <a [routerLink]="[category.id, 'edit']" class="btn btn-link mr-2 mt-1  btn-right">
+          <i class="material-icons" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Categoria">edit</i>
         </a>
       </td>
     </tr>

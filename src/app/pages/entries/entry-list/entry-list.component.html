@@ -71,7 +71,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr  [class.table-danger]="entry.paidText=='Pedente'" [class.table-success]="entry.paidText=='Pago'" *ngFor="let entry of resources">
+    <!-- [class.table-danger]="entry.paidText=='Pedente'" [class.table-success]="entry.paidText=='Pago'"-->
+    <tr  *ngFor="let entry of resources">
       <td>
         <strong>{{entry.name}}</strong><br>
         <small class="text-success">{{entry.date}}</small><br>
@@ -85,14 +86,15 @@
           {{entry.amount |  currency: 'BRL':'':'1.2-2'}}
         </strong>
         <br>
-        <span class="badge badge-light">{{entry.paidText}}</span>
+        <span *ngIf= "entry.paidText=='Pedente' "class="badge badge-pill badge-danger">{{entry.paidText}}</span>
+        <span *ngIf= "entry.paidText=='Pago' " class="badge badge-pill badge-success">{{entry.paidText}}</span>
       </td>
       <td class="text-center">
-        <button (click)="deleteResource(entry)" class="btn btn-outline-danger btn-sm mr-2 mt-1 btn-right">
-          <i class="material-icons">delete</i>
-        </button>
-        <a [routerLink]="[entry.id, 'edit']" class="btn btn-outline-info btn-sm mr-2 mt-1 btn-right">
-          <i class="material-icons">edit</i>
+        <a (click)="deleteResource(entry)" class="btn btn-link text-danger mr-2 mt-1 btn-right" tool>
+          <i class="material-icons" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover Conta">delete</i>
+        </a>
+        <a [routerLink]="[entry.id, 'edit']" class="btn btn-link mr-2 mt-1  btn-right">
+          <i class="material-icons" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Conta">edit</i>
         </a>
       </td>
     </tr>
