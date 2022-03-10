@@ -13,12 +13,12 @@
                   </h3>
                 </div>
                 <div class="card-body">
-                  <div class="alert alert-sucess" *ngIf="mensagemSucesso">
+                  <div class="alert alert-danger" *ngIf="mensagemSucesso">
                     {{mensagemSucesso}}
                   </div>
-                  <div class="alert alert-danger" *ngIf="loginError && !cadastrando">
+                  <!-- <div class="alert alert-danger" *ngIf="loginError && !cadastrando">
                     Login e/ou Senha incorreto(a).
-                  </div>
+                  </div> -->
                   <div class="alert alert-danger" *ngFor="let error of serverErrorMessages">
                     {{error}}
                   </div>

@@ -25,7 +25,17 @@ export class LoginComponent {
   ) { }
 
   onSubmit() {
-    this.router.navigate(['/reports'])
+
+    this.authService
+      .tentarLogar(this.name, this.password)
+      .subscribe(response => {
+        this.router.navigate(['/reports'])
+        console.log(response)
+      }, error => {
+        this.serverErrorMessages = ['Login e/ou Senha incorreto(a)']
+      }
+      )
+
   }
   preparaCadastrar(event) {
     event.preventDefault();
@@ -47,23 +57,23 @@ export class LoginComponent {
       .subscribe(response => {
         this.mensagemSucesso = 'Cadastro realizado com sucesso! Efetue o login.';
         this.cadastrando = false;
-        this.name='';
-        this.password='';
+        this.name = '';
+        this.password = '';
         this.serverErrorMessages = [];
       }, error => {
-        this.actionsForError (error.error);
+        this.actionsForError(error.error);
         this.mensagemSucesso = null;
       })
   }
 
 
-   actionsForError(error) {
+  actionsForError(error) {
     toastr.error(error.titulo);
     console.log(error)
     this.submittingForm = false;
 
     if (error.status !== 400)
-      this.serverErrorMessages = [ ' ' + error.titulo];
+      this.serverErrorMessages = [' ' + error.titulo];
     else
       this.serverErrorMessages = [' ' + error.titulo]
   }
