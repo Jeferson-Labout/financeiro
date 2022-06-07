@@ -43,15 +43,20 @@ export class ReportsComponent implements OnInit {
   ngOnInit() {
     this.categoryService.getAll()
       .subscribe(categories => this.categories = categories);
+
+     
+
   }
 
 
   generateReports() {
     const month = this.month.nativeElement.value;
     const year = this.year.nativeElement.value;
+    console.log('%c', 'padding: 40px 45px;line-height:100px;background:url("http://i65.tinypic.com/dnixjm.png") no-repeat;background-size: cover;');
 
     if (!month || !year)
       alert('Você precisa selecionar o Mês e o Ano para gerar os relatórios')
+      
     else
       this.entryService.getByMonthAndYear(month, year).subscribe(this.setValues.bind(this))
   }
